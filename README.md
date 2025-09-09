@@ -14,28 +14,6 @@ Prerequisites:
 - OpenAI API key
 - VS Code (optional)
 
-Project Layout (flat)
-.
-├─ chat_history.txt                  # your raw chat input (daily)
-├─ chat_history.jsonl                # generated (messages as JSONL)
-├─ qa_pairs.jsonl                    # generated (Q&A pairs)
-├─ kb_drafts/                        # generated (per-thread Markdown drafts)
-├─ approved_kb_articles.md           # generated (merged approved Markdown)
-├─ approved_kb_articles.html         # generated (HTML for browser)
-│
-├─ main.py                           # TXT -> JSONL converter
-├─ qa_prompts.py                     # prompts for Q&A extraction
-├─ llm_client.py                     # OpenAI client wrapper
-├─ qa_extract.py                     # JSONL -> Q&A pairs
-├─ kb_prompts.py                     # prompts for KB summarization
-├─ kb_summarize.py                   # Q&A -> Markdown drafts
-├─ merge_approved_kb.py              # merge approved drafts
-├─ convert_md_to_html.py             # Markdown -> HTML
-├─ daily_pipeline.py                 # (optional) run text->drafts end-to-end
-├─ publish_pipeline.py               # (optional) merge approved -> HTML
-├─ .env                              # OPENAI_API_KEY (not committed)
-└─ .gitignore                        # includes .env, venv/, __pycache__/
-
 Set up:
 1) Clone & enter
 git clone <your-repo-url> KnowledgeBase
