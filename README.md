@@ -81,8 +81,8 @@ To check OPENAI Key is loaded, run test.py file
 python test.py     #It will print the key
 
 Next steps:
-Create a python script to pipeline first 3 steps
-Create a python script to pipeline last 3 steps
-Create a diectory outside project to store .txt files and html files
-Change script to delete draft markdown files aftr step 7
-Change scripts to give options to use any otehr LLM tools
+- Create a python script to pipeline first 3 steps
+- Create a python script to pipeline last 3 steps
+- Create a diectory outside project to store .txt files and html files
+- Change script to delete draft markdown files aftr step 7
+- Change scripts to give options to use any otehr LLM tools
