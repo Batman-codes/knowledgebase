@@ -1,0 +1,95 @@
+
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Knowledge Base Articles</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; }
+            h1, h2, h3 { color: #2c3e50; }
+            pre { background: #f4f4f4; padding: 10px; }
+            code { background: #f4f4f4; padding: 2px 5px; }
+            hr { margin: 40px 0; }
+        </style>
+    </head>
+    <body>
+    <h1>Client B Form Submission Failure</h1>
+<p><strong>status:approved</strong>
+<strong>Problem</strong><br />
+Client B experiences a failure during form submission, where the form hangs after clicking Submit.</p>
+<p><strong>Environment</strong><br />
+- Submission endpoint: /submitForm</p>
+<p><strong>Steps</strong><br />
+1. Attempt to submit the form.
+2. Observe the console for any errors.</p>
+<p><strong>Expected</strong><br />
+The form should submit successfully without hanging.</p>
+<p><strong>Actual</strong><br />
+- The console displays a "400 Bad Request" error for the /submitForm endpoint.</p>
+<p><strong>Resolution</strong><br />
+- Identify that the 'participantType' was missing in the payload, which is now mandatory.
+- Implement a hotfix to add fallback logic that auto-sets <code>participantType='General'</code> if it is missing.
+- Retest the form submission.</p>
+<p><strong>Notes</strong><br />
+- After implementing the fix, form submission works correctly. The Client B team will be informed of the resolution.</p>
+<hr />
+<h1>Export Feature Failure Resolution</h1>
+<p><strong>status:approved</strong>
+<strong>Problem</strong><br />
+Client A is experiencing a failure with the export feature, resulting in a 500 error.</p>
+<p><strong>Environment</strong><br />
+- Export service</p>
+<p><strong>Steps</strong><br />
+1. Amit deployed a minor update related to the export service.
+2. Amit reviewed the logs and identified a null pointer exception in ExportController.
+3. Amit patched the issue and redeployed the export service.</p>
+<p><strong>Expected</strong><br />
+The export feature should function without errors.</p>
+<p><strong>Actual</strong><br />
+The export feature was failing with a 500 error prior to the patch.</p>
+<p><strong>Resolution</strong><br />
+After Amit implemented the patch and redeployed the export service, the issue was resolved, and the export feature is now working correctly.</p>
+<p><strong>Notes</strong><br />
+- The issue was traced back to a null pointer exception in the code.</p>
+<hr />
+<h1>Funding Step Failure for Client A</h1>
+<p><strong>status:approved</strong>
+<strong>Problem</strong><br />
+Client A faced an issue during the funding step where the process failed with the message: "You cannot proceed with this transaction right now."</p>
+<p><strong>Environment</strong><br />
+Sandbox environment.</p>
+<p><strong>Steps</strong><br />
+1. Review logs for the sandbox environment.
+2. Identify any timeout issues.
+3. Check the retry logic configuration.
+4. Adjust the retry logic to allow multiple attempts.</p>
+<p><strong>Expected</strong><br />
+Funding process should complete successfully after applying the fix.</p>
+<p><strong>Actual</strong><br />
+Funding process fails initially due to a gateway timeout and incorrect retry logic configuration.</p>
+<p><strong>Resolution</strong><br />
+- Fix the retry logic configuration to allow more than one attempt.
+- After applying the fix, the funding process works and completes successfully.</p>
+<p><strong>Notes</strong><br />
+- Logs indicated a gateway timeout issue.
+- The retry logic was stopping after one attempt due to a wrong configuration.</p>
+<hr />
+<h1>NullReferenceException in PaymentService for Client C</h1>
+<p><strong>status:approved</strong>
+<strong>Problem</strong><br />
+A NullReferenceException was observed in the logs for Client C.</p>
+<p><strong>Environment</strong><br />
+- Client C's system</p>
+<p><strong>Steps</strong><br />
+1. Review the logs for Client C.
+2. Identify the occurrence of NullReferenceException in PaymentService.</p>
+<p><strong>Expected</strong><br />
+No exceptions should be present in the logs.</p>
+<p><strong>Actual</strong><br />
+A NullReferenceException was found in the PaymentService logs.</p>
+<p><strong>Resolution</strong><br />
+Investigate the cause of the NullReferenceException in PaymentService and implement necessary fixes.</p>
+<p><strong>Notes</strong><br />
+- Ensure to monitor the logs after applying the fix to confirm resolution.</p>
+    </body>
+    </html>
+    

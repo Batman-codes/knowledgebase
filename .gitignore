@@ -1,0 +1,19 @@
+# Python venvs
+venv/
+.venv/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Env files & secrets
+.env
+.env.*        # e.g., .env.dev, .env.prod
+
+# Editors/OS
+.DS_Store
+.idea/
+.vscode/

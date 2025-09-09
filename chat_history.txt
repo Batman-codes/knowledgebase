@@ -1,0 +1,35 @@
+[2025-09-08 09:12:10] QA (Rahul): Hey team, export feature for Client A is failing with a 500 error. Anyone aware of changes pushed last night?  
+[2025-09-08 09:13:02] Developer (Amit): Hmm, I deployed a minor update in the export service. Could be related.  
+[2025-09-08 09:14:20] Product Manager (Sneha): Is this blocking them from getting reports?  
+[2025-09-08 09:14:35] QA (Rahul): Yep, they have an event today, kinda urgent.  
+[2025-09-08 09:15:50] Developer (Amit): Checking logs... seeing a null pointer exception in ExportController. Will patch and redeploy in 20 min.  
+[2025-09-08 09:25:10] Architect (Vikram): Let’s add null checks in config mapping; this might happen for other clients too.  
+[2025-09-08 09:28:00] Developer (Amit): Patch deployed. Rahul, can you retry?  
+[2025-09-08 09:29:10] QA (Rahul): Just tested. Export works now. Thanks all!  
+
+[2025-09-08 10:05:30] QA (Priya): Submission fails for Client B. The form just hangs after clicking Submit.  
+[2025-09-08 10:06:10] Developer (Amit): Seeing any errors in console/network logs?  
+[2025-09-08 10:07:22] QA (Priya): Console shows 400 Bad Request for /submitForm endpoint.  
+[2025-09-08 10:08:40] Architect (Vikram): This may be due to missing 'participantType' in payload. We recently made it mandatory.  
+[2025-09-08 10:09:10] Product Manager (Sneha): Is this change documented? Client teams should be aware.  
+[2025-09-08 10:10:00] Developer (Amit): Adding fallback logic to auto-set participantType='General' if missing. Hotfix in 15 min.  
+[2025-09-08 10:25:10] QA (Priya): Retested. Form submission works now. Will inform Client B team.  
+
+[2025-09-08 11:00:50] QA (Rahul): Funding step fails for Client A → "You cannot proceed with this transaction right now".  
+[2025-09-08 11:02:12] Product Manager (Sneha): Did we hit payment gateway limits?  
+[2025-09-08 11:03:00] Developer (Amit): Logs show gateway timeout for sandbox environment.  
+[2025-09-08 11:04:20] Architect (Vikram): Maybe retry logic not working properly?  
+[2025-09-08 11:05:15] Developer (Amit): Yes, retries stop after 1 attempt due to wrong config. Will fix to allow 3 retries with backoff.  
+[2025-09-08 11:12:45] QA (Rahul): Retesting... Works after fix. Funding completes.  
+
+[2025-09-08 12:30:10] QA (Priya): For Client C, app submission sends it to review queue instead of auto-approval. Config issue?  
+[2025-09-08 12:31:20] Product Manager (Sneha): Client C wanted auto-approval last month, I remember updating config.  
+[2025-09-08 12:32:40] Architect (Vikram): Config flag in DB might be overridden by default rules in backend.  
+[2025-09-08 12:34:10] Developer (Amit): Found the issue. AutoApprove flag read from old config table, not the new one. Fixing query now.  
+[2025-09-08 12:40:15] QA (Priya): After fix, submissions go through without review. All good.  
+
+[2025-09-08 14:20:05] QA (Rahul): Seeing "NullReferenceException in PaymentService" for Client C in today’s logs.  
+[2025-09-08 14:21:10] Developer (Amit): Might be due to null card details in sandbox mode.  
+[2025-09-08 14:22:30] Architect (Vikram): Add guard clauses for null values. Also log participantId for traceability.  
+[2025-09-08 14:25:00] Developer (Amit): Fixed code and added more context logs. Patch deployed.  
+[2025-09-08 14:27:40] QA (Rahul): Logs look clean now. No more exceptions.  
